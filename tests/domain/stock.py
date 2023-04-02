@@ -10,6 +10,7 @@ def ibm_params():
                     'currency': 'USD'
     }
 
+
 def test_stock_constructor(ibm_params):
     ibm = Stock(**ibm_params)
     for key, value in ibm_params.items():
@@ -20,6 +21,12 @@ def test_stock_contstructor_from_dict(ibm_params):
     ibm = Stock.from_dict(ibm_params)
     for key, value in ibm_params.items():
         assert getattr(ibm, key) == value
+
+
+def test_stock_to_disct(ibm_params):
+    ibm = Stock.from_dict(ibm_params)
+
+    assert ibm.to_dict() == ibm_params
 
 
 
