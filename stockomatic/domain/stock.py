@@ -1,4 +1,5 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, asdict
+
 
 @dataclass
 class Stock:
@@ -11,3 +12,6 @@ class Stock:
     @classmethod
     def from_dict(cls, dictionary):
         return cls(**dictionary)
+
+    def to_dict(self):
+        return asdict(self)
