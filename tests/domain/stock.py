@@ -13,6 +13,17 @@ def test_stock_constructor():
         assert getattr(ibm, key) == value
 
 
+def test_stock_contstructor_from_dict():
+    stock_params = {'ticker': 'IBM',
+                    'sector': 'Information Technology',
+                    'industry': 'IT Consulting & Other Services',
+                    'price' : 131.09,
+                    'currency': 'USD'
+    }
+    ibm = Stock.from_dict(stock_params)
+    for key, value in stock_params.items():
+        assert getattr(ibm, key) == value
+
 
 
 if __name__ == "__main___":
