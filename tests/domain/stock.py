@@ -1,27 +1,24 @@
 import pytest
 from stockomatic.domain.stock import Stock
 
-def test_stock_constructor():
-    stock_params = {'ticker': 'IBM',
+@pytest.fixture
+def ibm_params():
+    return {'ticker': 'IBM',
                     'sector': 'Information Technology',
                     'industry': 'IT Consulting & Other Services',
                     'price' : 131.09,
                     'currency': 'USD'
     }
-    ibm = Stock(**stock_params)
-    for key, value in stock_params.items():
+
+def test_stock_constructor(ibm_params):
+    ibm = Stock(**ibm_params)
+    for key, value in ibm_params.items():
         assert getattr(ibm, key) == value
 
 
-def test_stock_contstructor_from_dict():
-    stock_params = {'ticker': 'IBM',
-                    'sector': 'Information Technology',
-                    'industry': 'IT Consulting & Other Services',
-                    'price' : 131.09,
-                    'currency': 'USD'
-    }
-    ibm = Stock.from_dict(stock_params)
-    for key, value in stock_params.items():
+def test_stock_contstructor_from_dict(ibm_params):
+    ibm = Stock.from_dict(ibm_params)
+    for key, value in ibm_params.items():
         assert getattr(ibm, key) == value
 
 
