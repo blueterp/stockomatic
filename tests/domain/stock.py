@@ -25,10 +25,17 @@ def test_stock_contstructor_from_dict(ibm_params):
         assert getattr(ibm, key) == value
 
 
-def test_stock_to_disct(ibm_params):
+def test_stock_to_dict(ibm_params):
     ibm = Stock.from_dict(ibm_params)
 
     assert ibm.to_dict() == ibm_params
+
+
+def test_stock_comparison(ibm_params):
+    s1 = Stock.from_dict(ibm_params)
+    s2 = Stock.from_dict(ibm_params)
+
+    assert s1 == s2
 
 
 if __name__ == "__main___":
